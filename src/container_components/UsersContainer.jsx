@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import axios from 'axios';
 import { follow, unfollow, setUsers, setPages, setTotal, setFetch } from '../redux/users-reducer';
 import Users from '../components/Users';
 import { usersAPI } from '../api/api';

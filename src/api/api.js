@@ -24,5 +24,10 @@ const profileAPI = {
         return instance.get(`profile/${userId}`);
     },
 };
+const headerAPI = {
+    setData: () => {
+        return instance.get(`auth/me`);
+    },
+};
 
-export { usersAPI, profileAPI };
+export { usersAPI, profileAPI, headerAPI };

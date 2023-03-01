@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import { usersAPI } from '../api/api';
 import styles from '../css/Users.module.css';
@@ -48,7 +47,6 @@ const Users = (props) => {
                                     Unfollowed
                                 </button>
                             )}
-                            {/* {user.isFollowed ? <button onClick={() => props.unfollow(user.id) }>Followed</button> : <button onClick={() => props.follow(user.id)}>Unfollowed</button>} */}
                         </div>
                     </li>
                 ))}
