@@ -12,6 +12,12 @@ const usersAPI = {
     getUsers: (currentPage = 1, pageSize) => {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`);
     },
+    unfollowUsers: (userId) => {
+        return instance.delete(`follow/${userId}`);
+    },
+    followUsers: (userId) => {
+        return instance.post(`follow/${userId}`);
+    },
 };
 const profileAPI = {
     setProfile: (userId) => {
