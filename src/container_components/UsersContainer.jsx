@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import { follow, unfollow, setUsers, setPages, setTotal, setFetch } from '../redux/users-reducer';
 import Users from '../components/Users';
+import { usersAPI } from '../api/api';
 
 const mapStateToProps = (state) => {
     return { usersPage: state.usersPage };
@@ -13,7 +14,8 @@ class UsersApi extends React.Component {
     componentDidMount() {
         if (this.props.usersPage.users.length === 0) {
             this.props.setFetch(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPage.currentPage}&count=${this.props.usersPage.pageSize}`, { withCredentials: true }).then((response) => {
+            // ! // Api request // ! //
+            usersAPI.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize).then((response) => {
                 this.props.setFetch(false);
                 this.props.setUsers(response.data.items);
                 this.props.setTotal(24);
@@ -23,7 +25,8 @@ class UsersApi extends React.Component {
     onPageChange = (pageNumber) => {
         this.props.setPages(pageNumber);
         this.props.setFetch(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.usersPage.pageSize}`, { withCredentials: true }).then((response) => {
+        // ! // Api request // ! //
+        usersAPI.getUsers(pageNumber, this.props.usersPage.pageSize).then((response) => {
             this.props.setFetch(false);
             this.props.setUsers(response.data.items);
         });
