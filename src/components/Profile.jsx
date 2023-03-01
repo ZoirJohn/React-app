@@ -7,7 +7,7 @@ const Profile = (props) => {
         return <Preloader />;
     }
     return (
-        <section className="profile">
+        <section className='profile'>
             <Section {...props.profilePage} />
             <PostsContainer />
         </section>
