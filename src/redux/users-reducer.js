@@ -12,7 +12,7 @@ const initialState = {
     pageSize: 5,
     totalUsers: 0,
     isFetching: false,
-    isDisabling: true,
+    isDisabling: null,
 };
 
 function users_redcuer(state = initialState, action) {
@@ -52,4 +52,4 @@ const setTotal = (total) => ({ type: SET_TOTAL, total });
 const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
 const setButton = (buttonState) => ({ type: SET_BUTTON_STATE, buttonState });
 
-export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch };
+export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch,setButton };

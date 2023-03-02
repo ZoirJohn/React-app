@@ -29,22 +29,30 @@ const Users = (props) => {
                             {user.isFollowed ? (
                                 <button
                                     disabled={props.usersPage.isDisabling}
-                                    onClick={() =>
+                                    onClick={() => {
+                                        props.setButton(true);
                                         usersAPI.unfollowUsers(user.id).then((response) => {
-                                            if (response.data.resultCode == 0) props.unfollow(user.id);
-                                        })
-                                    }
+                                            if (response.data.resultCode == 0) {
+                                                props.unfollow(user.id);
+                                                props.setButton(false);
+                                            }
+                                        });
+                                    }}
                                 >
                                     Followed
                                 </button>
                             ) : (
                                 <button
                                     disabled={props.usersPage.isDisabling}
-                                    onClick={() =>
+                                    onClick={() => {
+                                        props.setButton(true);
                                         usersAPI.followUsers(user.id).then((response) => {
-                                            if (response.data.resultCode == 0) props.follow(user.id);
-                                        })
-                                    }
+                                            if (response.data.resultCode == 0) {
+                                                props.unfollow(user.id);
+                                                props.setButton(false);
+                                            }
+                                        });
+                                    }}
                                 >
                                     Unfollowed
                                 </button>

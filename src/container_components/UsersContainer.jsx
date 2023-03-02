@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { follow, unfollow, setUsers, setPages, setTotal, setFetch } from '../redux/users-reducer';
+import { follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton } from '../redux/users-reducer';
 import Users from '../components/Users';
 import { usersAPI } from '../api/api';
 
@@ -35,7 +35,7 @@ class UsersApi extends React.Component {
             pages.push(i);
         }
 
-        return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} follow={this.props.follow} unfollow={this.props.unfollow} />;
+        return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} follow={this.props.follow} unfollow={this.props.unfollow} setButton={setButton} />;
     }
 }
 
@@ -50,6 +50,7 @@ const UsersContainer = connect(mapStateToProps, {
     setPages,
     setTotal,
     setFetch,
+    setButton,
 })(UsersApi);
 
 export default UsersContainer;
