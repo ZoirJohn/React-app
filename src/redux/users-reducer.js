@@ -12,7 +12,7 @@ const initialState = {
     pageSize: 5,
     totalUsers: 0,
     isFetching: false,
-    isDisabling: null,
+    isDisabling: false,
 };
 
 function users_redcuer(state = initialState, action) {
