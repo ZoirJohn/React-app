@@ -4,6 +4,7 @@ const SET_USERS = 'SET_USERS';
 const SET_PAGES = 'SET_PAGES';
 const SET_TOTAL = 'SET_TOTAL';
 const SET_FETCH = 'SET_FETCH';
+const SET_BUTTON_STATE = 'SET_BUTTON_STATE';
 
 const initialState = {
     users: [],
@@ -11,6 +12,7 @@ const initialState = {
     pageSize: 5,
     totalUsers: 0,
     isFetching: false,
+    isDisabling: true,
 };
 
 function users_redcuer(state = initialState, action) {
@@ -35,6 +37,8 @@ function users_redcuer(state = initialState, action) {
         return { ...state, totalUsers: action.total };
     } else if (action.type === SET_FETCH) {
         return { ...state, isFetching: action.fetched };
+    } else if (action.type === SET_BUTTON_STATE) {
+        return { ...state, isDisabling: action.buttonState };
     }
 
     return stateCopy;
@@ -46,5 +50,6 @@ const setUsers = (consumers) => ({ type: SET_USERS, consumers });
 const setPages = (page) => ({ type: SET_PAGES, page });
 const setTotal = (total) => ({ type: SET_TOTAL, total });
 const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
+const setButton = (buttonState) => ({ type: SET_BUTTON_STATE, buttonState });
 
 export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch };

@@ -4,10 +4,6 @@ import { follow, unfollow, setUsers, setPages, setTotal, setFetch } from '../red
 import Users from '../components/Users';
 import { usersAPI } from '../api/api';
 
-const mapStateToProps = (state) => {
-    return { usersPage: state.usersPage };
-};
-
 // ! Component
 class UsersApi extends React.Component {
     componentDidMount() {
@@ -42,6 +38,10 @@ class UsersApi extends React.Component {
         return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} follow={this.props.follow} unfollow={this.props.unfollow} />;
     }
 }
+
+const mapStateToProps = (state) => {
+    return { usersPage: state.usersPage };
+};
 
 const UsersContainer = connect(mapStateToProps, {
     follow,

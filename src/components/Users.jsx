@@ -28,6 +28,7 @@ const Users = (props) => {
                             {user.name}
                             {user.isFollowed ? (
                                 <button
+                                    disabled={props.usersPage.isDisabling}
                                     onClick={() =>
                                         usersAPI.unfollowUsers(user.id).then((response) => {
                                             if (response.data.resultCode == 0) props.unfollow(user.id);
@@ -38,6 +39,7 @@ const Users = (props) => {
                                 </button>
                             ) : (
                                 <button
+                                    disabled={props.usersPage.isDisabling}
                                     onClick={() =>
                                         usersAPI.followUsers(user.id).then((response) => {
                                             if (response.data.resultCode == 0) props.follow(user.id);
