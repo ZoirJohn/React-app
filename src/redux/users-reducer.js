@@ -12,7 +12,7 @@ const initialState = {
     pageSize: 5,
     totalUsers: 0,
     isFetching: false,
-    isDisabling: false,
+    isDisabling: [],
 };
 
 function users_redcuer(state = initialState, action) {
@@ -38,7 +38,7 @@ function users_redcuer(state = initialState, action) {
     } else if (action.type === SET_FETCH) {
         return { ...state, isFetching: action.fetched };
     } else if (action.type === SET_BUTTON_STATE) {
-        return { ...state, isDisabling: action.buttonState };
+        return { ...state, isDisabling: action.buttonState ? [...state.isDisabling, action.userState] : [state.isDisabling.filter((id) => id != action.userState)] };
     }
 
     return stateCopy;
@@ -50,6 +50,6 @@ const setUsers = (consumers) => ({ type: SET_USERS, consumers });
 const setPages = (page) => ({ type: SET_PAGES, page });
 const setTotal = (total) => ({ type: SET_TOTAL, total });
 const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
-const setButton = (buttonState) => ({ type: SET_BUTTON_STATE, buttonState });
+const setButton = (buttonState, userState) => ({ type: SET_BUTTON_STATE, buttonState, userState });
 
 export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton };

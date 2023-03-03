@@ -35,7 +35,7 @@ class UsersApi extends React.Component {
             pages.push(i);
         }
 
-        return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} follow={this.props.follow} unfollow={this.props.unfollow} setButton={setButton} />;
+        return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} follow={this.props.follow} unfollow={this.props.unfollow} setButton={this.props.setButton} />;
     }
 }
 

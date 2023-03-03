@@ -28,11 +28,14 @@ const Users = (props) => {
                             {user.name}
                             {user.isFollowed ? (
                                 <button
+                                    disabled={props.usersPage.isDisabling.some((id) => id === user.id)}
                                     onClick={() => {
+                                        props.setButton(true, user.id);
                                         usersAPI.unfollowUsers(user.id).then((response) => {
                                             if (response.data.resultCode == 0) {
                                                 props.unfollow(user.id);
                                             }
+                                            props.setButton(false, user.id);
                                         });
                                     }}
                                 >
@@ -40,11 +43,14 @@ const Users = (props) => {
                                 </button>
                             ) : (
                                 <button
+                                    disabled={props.usersPage.isDisabling.some((id) => id === user.id)}
                                     onClick={() => {
+                                        props.setButton(true, user.id);
                                         usersAPI.followUsers(user.id).then((response) => {
                                             if (response.data.resultCode == 0) {
                                                 props.follow(user.id);
                                             }
+                                            props.setButton(false, user.id);
                                         });
                                     }}
                                 >
