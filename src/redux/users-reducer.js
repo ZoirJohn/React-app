@@ -52,4 +52,4 @@ const setTotal = (total) => ({ type: SET_TOTAL, total });
 const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
 const setButton = (buttonState) => ({ type: SET_BUTTON_STATE, buttonState });
 
-export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch,setButton };
+export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton };
