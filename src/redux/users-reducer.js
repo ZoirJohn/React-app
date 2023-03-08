@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -44,6 +46,16 @@ function users_redcuer(state = initialState, action) {
     return stateCopy;
 }
 
+const getUsersThunk = (currentPage, pageSize) => {
+    return (dispatch) => {
+        usersAPI.getUsers(currentPage, pageSize).then((response) => {
+            dispatch(setFetch(false));
+            dispatch(setUsers(response.data.items));
+            dispatch(setTotal(24));
+        });
+    };
+};
+
 const follow = (userID) => ({ type: FOLLOW, userID });
 const unfollow = (userID) => ({ type: UNFOLLOW, userID });
 const setUsers = (consumers) => ({ type: SET_USERS, consumers });
@@ -52,4 +64,4 @@ const setTotal = (total) => ({ type: SET_TOTAL, total });
 const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
 const setButton = (buttonState, userState) => ({ type: SET_BUTTON_STATE, buttonState, userState });
 
-export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton };
+export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton, getUsersThunk };

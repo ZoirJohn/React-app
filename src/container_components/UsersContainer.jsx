@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton } from '../redux/users-reducer';
+import { follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton,getUsersThunk } from '../redux/users-reducer';
 import Users from '../components/Users';
 import { usersAPI } from '../api/api';
 
@@ -10,11 +10,12 @@ class UsersApi extends React.Component {
         if (this.props.usersPage.users.length === 0) {
             this.props.setFetch(true);
             // ! // Api request // ! //
-            usersAPI.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize).then((response) => {
-                this.props.setFetch(false);
-                this.props.setUsers(response.data.items);
-                this.props.setTotal(24);
-            });
+            // usersAPI.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize).then((response) => {
+            //     this.props.setFetch(false);
+            //     this.props.setUsers(response.data.items);
+            //     this.props.setTotal(24);
+            // });
+            this.props.getUsersThunk(this.props.usersPage.currentPage, this.props.usersPage.pageSize);
         }
     }
     onPageChange = (pageNumber) => {
@@ -51,6 +52,7 @@ const UsersContainer = connect(mapStateToProps, {
     setTotal,
     setFetch,
     setButton,
+    getUsersThunk,
 })(UsersApi);
 
 export default UsersContainer;

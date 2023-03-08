@@ -1,4 +1,4 @@
-import { legacy_createStore, combineReducers } from 'redux';
+import { legacy_createStore, combineReducers, applyMiddleware } from 'redux';
 import { profile_reducer } from './profile-reducer';
 import { messages_reducer } from './messages-reducer';
 import { users_redcuer } from './users-reducer';
@@ -11,7 +11,7 @@ const reducers = combineReducers({
     auth: auth_reducer,
 });
 
-const store = legacy_createStore(reducers);
+const store = legacy_createStore(reducers,applyMiddleware());
 
 window.store = store;
 
