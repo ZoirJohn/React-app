@@ -40,7 +40,7 @@ function users_redcuer(state = initialState, action) {
     } else if (action.type === SET_FETCH) {
         return { ...state, isFetching: action.fetched };
     } else if (action.type === SET_BUTTON_STATE) {
-        return { ...state, isDisabling: action.buttonState ? [...state.isDisabling, action.userState] : [state.isDisabling.filter((id) => id != action.userState)] };
+        return { ...state, isDisabling: action.buttonState ? [...state.isDisabling, action.userState] : [state.isDisabling.filter((id) => id !== action.userState)] };
     }
 
     return stateCopy;
@@ -48,10 +48,33 @@ function users_redcuer(state = initialState, action) {
 
 const getUsersThunk = (currentPage, pageSize) => {
     return (dispatch) => {
+        dispatch(setFetch(true));
         usersAPI.getUsers(currentPage, pageSize).then((response) => {
             dispatch(setFetch(false));
             dispatch(setUsers(response.data.items));
             dispatch(setTotal(24));
+        });
+    };
+};
+const followSuccess = (id) => {
+    return (dispatch) => {
+        dispatch(setButton(true, id));
+        usersAPI.followUsers(id).then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(follow(id));
+            }
+            dispatch(setButton(false, id));
+        });
+    };
+};
+const unfollowSuccess = (id) => {
+    return (dispatch) => {
+        dispatch(setButton(true, id));
+        usersAPI.unfollowUsers(id).then((response) => {
+            if (response.data.resultCode === 0) {
+                dispatch(unfollow(id));
+            }
+            dispatch(setButton(false, id));
         });
     };
 };
@@ -64,4 +87,4 @@ const setTotal = (total) => ({ type: SET_TOTAL, total });
 const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
 const setButton = (buttonState, userState) => ({ type: SET_BUTTON_STATE, buttonState, userState });
 
-export { users_redcuer, follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton, getUsersThunk };
+export { users_redcuer, setPages, followSuccess, unfollowSuccess,getUsersThunk };

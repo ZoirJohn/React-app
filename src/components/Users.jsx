@@ -30,13 +30,7 @@ const Users = (props) => {
                                 <button
                                     disabled={props.usersPage.isDisabling.some((id) => id === user.id)}
                                     onClick={() => {
-                                        props.setButton(true, user.id);
-                                        usersAPI.unfollowUsers(user.id).then((response) => {
-                                            if (response.data.resultCode == 0) {
-                                                props.unfollow(user.id);
-                                            }
-                                            props.setButton(false, user.id);
-                                        });
+                                        props.unfollowSuccess(user.id);
                                     }}
                                 >
                                     Followed
@@ -45,13 +39,7 @@ const Users = (props) => {
                                 <button
                                     disabled={props.usersPage.isDisabling.some((id) => id === user.id)}
                                     onClick={() => {
-                                        props.setButton(true, user.id);
-                                        usersAPI.followUsers(user.id).then((response) => {
-                                            if (response.data.resultCode == 0) {
-                                                props.follow(user.id);
-                                            }
-                                            props.setButton(false, user.id);
-                                        });
+                                        props.followSuccess(user.id);
                                     }}
                                 >
                                     Unfollowed
@@ -66,3 +54,11 @@ const Users = (props) => {
 };
 
 export default Users;
+
+// const follow = (userID) => ({ type: FOLLOW, userID });
+// const unfollow = (userID) => ({ type: UNFOLLOW, userID });
+// const setUsers = (consumers) => ({ type: SET_USERS, consumers });
+// const setPages = (page) => ({ type: SET_PAGES, page });
+// const setTotal = (total) => ({ type: SET_TOTAL, total });
+// const setFetch = (fetched) => ({ type: SET_FETCH, fetched });
+// const setButton = (buttonState, userState) => ({ type: SET_BUTTON_STATE, buttonState, userState });

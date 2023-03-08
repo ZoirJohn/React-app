@@ -1,31 +1,16 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import { follow, unfollow, setUsers, setPages, setTotal, setFetch, setButton,getUsersThunk } from '../redux/users-reducer';
+import { setPages, followSuccess, unfollowSuccess, getUsersThunk } from '../redux/users-reducer';
 import Users from '../components/Users';
 import { usersAPI } from '../api/api';
 
-// ! Component
 class UsersApi extends React.Component {
     componentDidMount() {
-        if (this.props.usersPage.users.length === 0) {
-            this.props.setFetch(true);
-            // ! // Api request // ! //
-            // usersAPI.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize).then((response) => {
-            //     this.props.setFetch(false);
-            //     this.props.setUsers(response.data.items);
-            //     this.props.setTotal(24);
-            // });
-            this.props.getUsersThunk(this.props.usersPage.currentPage, this.props.usersPage.pageSize);
-        }
+        this.props.getUsersThunk(this.props.usersPage.currentPage, this.props.usersPage.pageSize);
     }
     onPageChange = (pageNumber) => {
         this.props.setPages(pageNumber);
-        this.props.setFetch(true);
-        // ! // Api request // ! //
-        usersAPI.getUsers(pageNumber, this.props.usersPage.pageSize).then((response) => {
-            this.props.setFetch(false);
-            this.props.setUsers(response.data.items);
-        });
+        this.props.getUsersThunk(pageNumber, this.props.usersPage.pageSize);
     };
 
     render() {
@@ -36,7 +21,7 @@ class UsersApi extends React.Component {
             pages.push(i);
         }
 
-        return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} follow={this.props.follow} unfollow={this.props.unfollow} setButton={this.props.setButton} />;
+        return <Users usersPage={this.props.usersPage} pages={pages} onPageChange={this.onPageChange} followSuccess={this.props.followSuccess} unfollowSuccess={this.props.unfollowSuccess} setButton={this.props.setButton} />;
     }
 }
 
@@ -45,13 +30,9 @@ const mapStateToProps = (state) => {
 };
 
 const UsersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
     setPages,
-    setTotal,
-    setFetch,
-    setButton,
+    followSuccess,
+    unfollowSuccess,
     getUsersThunk,
 })(UsersApi);
 
