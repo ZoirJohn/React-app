@@ -1,3 +1,5 @@
+import { profileAPI } from '../api/api';
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -24,8 +26,16 @@ function profile_reducer(state = initialState, action) {
     return stateCopy;
 }
 
+const setProfile = (userId) => {
+    return (dispatch) => {
+        profileAPI.setProfile(userId).then((response) => {
+            dispatch(setUserProfile(response.data));
+        });
+    };
+};
+
 const addPostAction = () => ({ type: ADD_MESSAGE });
 const updatePostAction = (text) => ({ type: UPDATE_MESSAGE, text });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 
-export { profile_reducer, addPostAction, updatePostAction, setUserProfile };
+export { profile_reducer, addPostAction, updatePostAction, setProfile };

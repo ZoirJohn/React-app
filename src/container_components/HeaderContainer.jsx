@@ -1,15 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { setUserData } from '../redux/auth-reducer';
-import { headerAPI } from '../api/api';
+import { setData } from '../redux/auth-reducer';
 
 class HeaderApi extends React.Component {
     componentDidMount() {
-        headerAPI.setData().then((response) => {
-            this.props.setUserData(response.data.data);
-        });
+        this.props.setData();
     }
     render() {
         return <Header {...this.props} />;
@@ -22,5 +18,5 @@ const mapStateToProps = (state) => {
     };
 };
 
-const HeaderContainer = connect(mapStateToProps, { setUserData })(HeaderApi);
+const HeaderContainer = connect(mapStateToProps, { setData })(HeaderApi);
 export default HeaderContainer;
