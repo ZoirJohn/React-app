@@ -7,6 +7,7 @@ import News from './News';
 import Music from './Music';
 import Settings from './Settings';
 import UsersContainer from '../container_components/UsersContainer';
+import Login from './Login';
 
 import styles from '../css/Main.module.css';
 
@@ -23,7 +24,7 @@ const Main = () => {
                     <Route path='music' element={<Music />} />
                     <Route path='settings' element={<Settings />} />
                     <Route path='users' element={<UsersContainer />} />
-                    <Route path='users' element={<UsersContainer />} />
+                    <Route path='login' element={<Login />} />
                 </Routes>
             </div>
         </main>
