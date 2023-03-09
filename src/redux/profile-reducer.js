@@ -26,13 +26,12 @@ function profile_reducer(state = initialState, action) {
     return stateCopy;
 }
 
-const setProfile = (userId) => {
-    return (dispatch) => {
+const setProfile = (userId) =>  (dispatch) => {
         profileAPI.setProfile(userId).then((response) => {
             dispatch(setUserProfile(response.data));
         });
     };
-};
+
 
 const addPostAction = () => ({ type: ADD_MESSAGE });
 const updatePostAction = (text) => ({ type: UPDATE_MESSAGE, text });
