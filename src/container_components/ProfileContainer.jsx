@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Profile from '../components/Profile';
 import { setProfile } from '../redux/profile-reducer';
+import { redirect } from 'react-router-dom';
 
 // ! With Router (1)
 function withRouter(Component) {
@@ -25,6 +26,9 @@ class ProfileApi extends React.Component {
         this.props.setProfile(userId);
     }
     render() {
+        if (this.props.auth === false) {
+            return redirect('/login');
+        }
         return <Profile {...this.props} />;
     }
 }
@@ -34,7 +38,7 @@ const ProfileRouter = withRouter(ProfileApi);
 
 // * Redux
 const mapStateToProps = (state) => {
-    return { profilePage: state.profilePage };
+    return { profilePage: state.profilePage, auth: state.auth.isAuthorized };
 };
 const ProfileContainer = connect(mapStateToProps, { setProfile })(ProfileRouter);
 
