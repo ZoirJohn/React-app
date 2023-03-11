@@ -18,7 +18,7 @@ const Chat = (props) => {
 
 const Messages = (props) => {
     if (props.auth === false) {
-        return redirect('/login');
+        return redirect('login');
     }
     const data = props.data.map((el) => <Name path={el.id} word={el.name} key={el.id} />);
     const message = props.message.map((el) => <Chat text={el.text} key={el.id} />);

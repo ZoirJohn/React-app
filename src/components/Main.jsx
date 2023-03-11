@@ -17,14 +17,14 @@ const Main = () => {
             <div className={styles.container}>
                 <Sidebar />
                 <Routes>
-                    <Route path='profile/:userId' element={<ProfileContainer />} />
-                    <Route path='profile' element={<ProfileContainer />} />
-                    <Route path='messages/*' element={<MessagesContainer />} />
-                    <Route path='news' element={<News />} />
-                    <Route path='music' element={<Music />} />
-                    <Route path='settings' element={<Settings />} />
-                    <Route path='users' element={<UsersContainer />} />
-                    <Route path='login' element={<Login />} />
+                    <Route path='/profile/:userId' element={<ProfileContainer />} />
+                    <Route path='/profile' element={<ProfileContainer />} />
+                    <Route path='/messages/*' element={<MessagesContainer />} />
+                    <Route path='/news' element={<News />} />
+                    <Route path='/music' element={<Music />} />
+                    <Route path='/settings' element={<Settings />} />
+                    <Route path='/users' element={<UsersContainer />} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
             </div>
         </main>

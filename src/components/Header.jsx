@@ -7,11 +7,11 @@ const Header = (props) => {
     return (
         <header>
             <div className={styles.container}>
-                <Link to='/profile'>
+                <Link to='profile'>
                     <img src={logo} alt='' />
                 </Link>
 
-                {props.isAuthorized === false ? <Link to='/register'>Log In</Link> : <p>Free</p>}
+                {props.isAuthorized?.login === undefined ? <Link to='login'>Log In</Link> : <p>Free</p>}
             </div>
         </header>
     );
