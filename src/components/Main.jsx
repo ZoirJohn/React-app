@@ -17,6 +17,7 @@ const Main = () => {
             <div className={styles.container}>
                 <Sidebar />
                 <Routes>
+                    <Route path='/' />
                     <Route path='/profile/:userId' element={<ProfileContainer />} />
                     <Route path='/profile' element={<ProfileContainer />} />
                     <Route path='/messages/*' element={<MessagesContainer />} />

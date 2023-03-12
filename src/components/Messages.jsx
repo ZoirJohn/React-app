@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import style from '../css/Message.module.css';
 
 const Name = (props) => {
@@ -17,8 +17,8 @@ const Chat = (props) => {
 };
 
 const Messages = (props) => {
-    if (props.auth === false) {
-        return redirect('login');
+    if (props.auth?.login === undefined) {
+        return <Navigate to='/login' />;
     }
     const data = props.data.map((el) => <Name path={el.id} word={el.name} key={el.id} />);
     const message = props.message.map((el) => <Chat text={el.text} key={el.id} />);
