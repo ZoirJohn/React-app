@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Profile from '../components/Profile';
+import withAuthRedirect from '../hoc/withAuthRedirect';
 import { setProfile } from '../redux/profile-reducer';
 
 // ! With Router (1)
@@ -33,7 +34,9 @@ class ProfileApi extends React.Component {
 }
 
 // ! With Router (2)
-const ProfileRouter = withRouter(ProfileApi);
+const authRedirectComponent = withAuthRedirect(ProfileApi);
+
+const ProfileRouter = withRouter(authRedirectComponent);
 
 // * Redux
 const mapStateToProps = (state) => {

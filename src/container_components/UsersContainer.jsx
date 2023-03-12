@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { setPages, followSuccess, unfollowSuccess, getUsersThunk } from '../redux/users-reducer';
 import Users from '../components/Users';
-import { usersAPI } from '../api/api';
 
 class UsersApi extends React.Component {
     componentDidMount() {
