@@ -1,7 +1,8 @@
-import { connect } from 'react-redux';
 import React from 'react';
-import { setPages, followSuccess, unfollowSuccess, getUsersThunk } from '../redux/users-reducer';
 import Users from '../components/Users';
+import { connect } from 'react-redux';
+import { setPages, followSuccess, unfollowSuccess, getUsersThunk } from '../redux/users-reducer';
+import { compose } from 'redux';
 
 class UsersApi extends React.Component {
     componentDidMount() {
@@ -28,11 +29,13 @@ const mapStateToProps = (state) => {
     return { usersPage: state.usersPage };
 };
 
-const UsersContainer = connect(mapStateToProps, {
-    setPages,
-    followSuccess,
-    unfollowSuccess,
-    getUsersThunk,
-})(UsersApi);
+const UsersContainer = compose(
+    connect(mapStateToProps, {
+        setPages,
+        followSuccess,
+        unfollowSuccess,
+        getUsersThunk,
+    })
+)(UsersApi);
 
 export default UsersContainer;
