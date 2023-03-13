@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {  useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { compose } from 'redux';
 import Profile from '../components/Profile';
 import withAuthRedirect from '../hoc/withAuthRedirect';
 import { setProfile } from '../redux/profile-reducer';
@@ -31,15 +32,13 @@ class ProfileApi extends React.Component {
 }
 
 // ! With Router (2)
-const authRedirectComponent = withAuthRedirect(ProfileApi);
-
-const ProfileRouter = withRouter(authRedirectComponent);
 
 // * Redux
 const mapStateToProps = (state) => {
     return { profilePage: state.profilePage, auth: state.auth.isAuthorized };
 };
-const ProfileContainer = connect(mapStateToProps, { setProfile })(ProfileRouter);
 
+
+const ProfileContainer = compose(connect(mapStateToProps, { setProfile }), withRouter, withAuthRedirect)(ProfileApi);
 
 export default ProfileContainer;
