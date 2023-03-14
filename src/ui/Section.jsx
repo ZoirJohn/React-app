@@ -1,4 +1,3 @@
-import { getValue } from '@testing-library/user-event/dist/utils';
 import { useState } from 'react';
 import img from '../img/background.webp';
 import dev from '../img/photo.png';
@@ -24,7 +23,7 @@ const ProfileSection = (props) => {
                         </a>
                     </p>
                     {editMode ? (
-                        <input type='text' value={word} autoFocus={true} onDoubleClick={() => setEditMode(false)} onChange={(e) => setWord(e.target.value)} />
+                        <input className='card-status' type='text' value={word} autoFocus={true} onDoubleClick={() => setEditMode(false)} onChange={(e) => setWord(e.target.value)} />
                     ) : (
                         <p className='card-status' onClick={() => setEditMode(true)}>
                             Status: {word}
