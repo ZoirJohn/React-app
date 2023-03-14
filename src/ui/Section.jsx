@@ -5,8 +5,13 @@ import dev from '../img/photo.png';
 const ProfileSection = (props) => {
     const [editMode, setEditMode] = useState(false);
     const [word, setWord] = useState('Good Death');
-    // props.setStatus(props.profile.userId);
     console.log(props);
+    if (props.status === null) {
+        props.getStatus(props.profile.userId);
+    }
+    const putStatus = () => {
+        setEditMode(false);
+    };
     return (
         <section className='profile'>
             <img src={img} alt='background' />
@@ -24,10 +29,10 @@ const ProfileSection = (props) => {
                         </a>
                     </p>
                     {editMode ? (
-                        <input className='card-status' type='text' value={word} autoFocus={true} onDoubleClick={() => setEditMode(false)} onChange={(e) => setWord(e.target.value)} />
+                        <input className='card-status' type='text' value={word} autoFocus={true} onDoubleClick={() => putStatus()} onChange={(e) => setWord(e.target.value)} />
                     ) : (
                         <p className='card-status' onClick={() => setEditMode(true)}>
-                            Status: {word}
+                            Status: {props.status}
                         </p>
                     )}
                 </div>

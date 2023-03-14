@@ -3,7 +3,7 @@ import { profileAPI } from '../api/api';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS_PROFILE = 'SET-STATUS-PROFILE';
+const GET_STATUS_PROFILE = 'GET-STATUS-PROFILE';
 
 const initialState = {
     message: [
@@ -24,7 +24,7 @@ function profile_reducer(state = initialState, action) {
         stateCopy.post = action.text;
     } else if (action.type === SET_USER_PROFILE) {
         return { ...stateCopy, profile: action.profile };
-    } else if (action.type === SET_STATUS_PROFILE) {
+    } else if (action.type === GET_STATUS_PROFILE) {
         return { ...stateCopy, status: action.status };
     }
     return stateCopy;
@@ -33,6 +33,12 @@ function profile_reducer(state = initialState, action) {
 const setProfile = (userId) => (dispatch) => {
     profileAPI.setProfile(userId).then((response) => {
         dispatch(setUserProfile(response.data));
+    });
+};
+
+const getStatus = (userId) => (dispatch) => {
+    profileAPI.getStatus(userId).then((response) => {
+        dispatch(getStatusProfile(response.data));
     });
 };
 
@@ -45,6 +51,7 @@ const setStatus = (userId) => (dispatch) => {
 const addPostAction = () => ({ type: ADD_MESSAGE });
 const updatePostAction = (text) => ({ type: UPDATE_MESSAGE, text });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-const setStatusProfile = (status) => ({ type: SET_STATUS_PROFILE, status });
+const getStatusProfile = (status) => ({ type: GET_STATUS_PROFILE, status });
+const setStatusProfile = () => ({ type: GET_STATUS_PROFILE });
 
-export { profile_reducer, addPostAction, updatePostAction, setProfile, setStatus };
+export { profile_reducer, addPostAction, updatePostAction, setProfile, getStatus, setStatus };

@@ -8,7 +8,7 @@ const Profile = (props) => {
     }
     return (
         <section className='profile'>
-            <Section {...props.profilePage} setStatus={props.setStatus} />
+            <Section {...props.profilePage} getStatus={props.getStatus} />
             <PostsContainer />
         </section>
     );
