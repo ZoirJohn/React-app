@@ -1,7 +1,12 @@
+import { getValue } from '@testing-library/user-event/dist/utils';
+import { useState } from 'react';
 import img from '../img/background.webp';
 import dev from '../img/photo.png';
 
 const ProfileSection = (props) => {
+    const [editMode, setEditMode] = useState(false);
+    const [word, setWord] = useState('Good Death');
+
     return (
         <section className='profile'>
             <img src={img} alt='background' />
@@ -18,6 +23,13 @@ const ProfileSection = (props) => {
                             https://github.com
                         </a>
                     </p>
+                    {editMode ? (
+                        <input type='text' value={word} autoFocus={true} onDoubleClick={() => setEditMode(false)} onChange={(e) => setWord(e.target.value)} />
+                    ) : (
+                        <p className='card-status' onClick={() => setEditMode(true)}>
+                            Status: {word}
+                        </p>
+                    )}
                 </div>
             </div>
         </section>
