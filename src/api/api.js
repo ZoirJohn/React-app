@@ -23,6 +23,12 @@ const profileAPI = {
     setProfile: (userId) => {
         return instance.get(`profile/${userId}`);
     },
+    getStatus: (userId) => {
+        return instance.get(`profile/status/${userId}`);
+    },
+    setStatus: (userId) => {
+        return instance.get(`profile/${userId}`);
+    },
 };
 const headerAPI = {
     setData: () => {

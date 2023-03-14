@@ -5,7 +5,8 @@ import dev from '../img/photo.png';
 const ProfileSection = (props) => {
     const [editMode, setEditMode] = useState(false);
     const [word, setWord] = useState('Good Death');
-
+    // props.setStatus(props.profile.userId);
+    console.log(props);
     return (
         <section className='profile'>
             <img src={img} alt='background' />
