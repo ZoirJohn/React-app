@@ -26,8 +26,8 @@ const profileAPI = {
     getStatus: (userId) => {
         return instance.get(`profile/status/${userId}`);
     },
-    setStatus: () => {
-        return instance.put(`profile/status`);
+    updateStatus: (status) => {
+        return instance.put(`profile/status`, { status: status });
     },
 };
 const headerAPI = {

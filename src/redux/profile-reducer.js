@@ -3,7 +3,7 @@ import { profileAPI } from '../api/api';
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_MESSAGE = 'UPDATE-MESSAGE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const GET_STATUS_PROFILE = 'GET-STATUS-PROFILE';
+const SET_STATUS_PROFILE = 'SET-STATUS-PROFILE';
 
 const initialState = {
     message: [
@@ -12,7 +12,7 @@ const initialState = {
         { text: 'Watcha you gonna do', id: 3 },
     ],
     post: '',
-    status: null,
+    status: 'hhello',
 };
 
 function profile_reducer(state = initialState, action) {
@@ -24,7 +24,7 @@ function profile_reducer(state = initialState, action) {
         stateCopy.post = action.text;
     } else if (action.type === SET_USER_PROFILE) {
         return { ...stateCopy, profile: action.profile };
-    } else if (action.type === GET_STATUS_PROFILE) {
+    } else if (action.type === SET_STATUS_PROFILE) {
         return { ...stateCopy, status: action.status };
     }
     return stateCopy;
@@ -38,20 +38,20 @@ const setProfile = (userId) => (dispatch) => {
 
 const getStatus = (userId) => (dispatch) => {
     profileAPI.getStatus(userId).then((response) => {
-        dispatch(getStatusProfile(response.data));
+        console.log(response);
+        dispatch(setStatusProfile(response.data));
     });
 };
 
-const setStatus = (userId) => (dispatch) => {
-    profileAPI.setStatus(userId).then((response) => {
-        dispatch(setStatusProfile(response.data));
+const updateStatus = (status) => (dispatch) => {
+    profileAPI.updateStatus(status).then((response) => {
+        if (response.data.resultCode === 0) dispatch(setStatusProfile(status));
     });
 };
 
 const addPostAction = () => ({ type: ADD_MESSAGE });
 const updatePostAction = (text) => ({ type: UPDATE_MESSAGE, text });
 const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
-const getStatusProfile = (status) => ({ type: GET_STATUS_PROFILE, status });
-const setStatusProfile = () => ({ type: GET_STATUS_PROFILE });
+const setStatusProfile = (status) => ({ type: SET_STATUS_PROFILE, status });
 
-export { profile_reducer, addPostAction, updatePostAction, setProfile, getStatus, setStatus };
+export { profile_reducer, addPostAction, updatePostAction, setProfile, getStatus, updateStatus };

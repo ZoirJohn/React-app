@@ -4,13 +4,16 @@ import dev from '../img/photo.png';
 
 const ProfileSection = (props) => {
     const [editMode, setEditMode] = useState(false);
-    const [word, setWord] = useState('Good Death');
-    console.log(props);
+    const [word, setWord] = useState(props.status);
     if (props.status === null) {
         props.getStatus(props.profile.userId);
     }
-    const putStatus = () => {
+    const putStatus = (e) => {
         setEditMode(false);
+        props.updateStatus(e.target.value);
+    };
+    const setStatus = () => {
+        setEditMode(true);
     };
     return (
         <section className='profile'>
@@ -29,9 +32,9 @@ const ProfileSection = (props) => {
                         </a>
                     </p>
                     {editMode ? (
-                        <input className='card-status' type='text' value={word} autoFocus={true} onDoubleClick={() => putStatus()} onChange={(e) => setWord(e.target.value)} />
+                        <input className='card-status' type='text' value={word} autoFocus={true} onDoubleClick={(e) => putStatus(e)} onChange={(e) => setWord(e.target.value)} />
                     ) : (
-                        <p className='card-status' onClick={() => setEditMode(true)}>
+                        <p className='card-status' onClick={setStatus}>
                             Status: {props.status}
                         </p>
                     )}
