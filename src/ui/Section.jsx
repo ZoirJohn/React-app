@@ -3,18 +3,22 @@ import img from '../img/background.webp';
 import dev from '../img/photo.png';
 
 const ProfileSection = (props) => {
-    const [editMode, setEditMode] = useState(false);
-    const [word, setWord] = useState(props.status);
     if (props.status === null) {
         props.getStatus(props.profile.userId);
     }
+    let status = props.status;
+    const [editMode, setEditMode] = useState(false);
+    const [word, setWord] = useState(status);
+
     const putStatus = (e) => {
         setEditMode(false);
         props.updateStatus(e.target.value);
     };
+
     const setStatus = () => {
         setEditMode(true);
     };
+
     return (
         <section className='profile'>
             <img src={img} alt='background' />

@@ -12,7 +12,7 @@ const initialState = {
         { text: 'Watcha you gonna do', id: 3 },
     ],
     post: '',
-    status: 'hhello',
+    status: null,
 };
 
 function profile_reducer(state = initialState, action) {
@@ -38,7 +38,6 @@ const setProfile = (userId) => (dispatch) => {
 
 const getStatus = (userId) => (dispatch) => {
     profileAPI.getStatus(userId).then((response) => {
-        console.log(response);
         dispatch(setStatusProfile(response.data));
     });
 };
