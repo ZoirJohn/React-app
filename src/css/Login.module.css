@@ -7,18 +7,31 @@ section {
     justify-content: center;
     flex-direction: column;
     gap: 1em 0;
+    padding: 2em 0;
 }
-label {
+.form label:not(.checkbox_label) {
     font-size: 1.5rem;
     display: flex;
-    align-items: center;
+    align-items: start;
+    flex-direction: column;
     gap: 0 1em;
 }
-input:not([type='checkbox']) {
-    width: 200px;
+input:not([type='checkbox'], [type='radio']) {
+    width: 300px;
+    background: #bcbcbc;
+    border: none;
+    padding: 1em;
+    font-size: 1rem;
 }
-.form button{
+input:not([type='checkbox'], [type='radio'])::placeholder {
+    font-size: 1rem;
+}
+.form button {
     width: 80px;
     height: 30px;
     font-size: 1rem;
+    background: var(--main-color);
+    border: none;
+    color: #fff;
+    font-family: 'Roboto Mono';
 }
