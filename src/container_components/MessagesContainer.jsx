@@ -10,11 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateMessage: (text) => {
-            dispatch(updateContactAction(text));
-        },
-        addMessage: () => {
-            dispatch(addContactAction());
+        addMessage: (text) => {
+            dispatch(addContactAction(text));
         },
     };
 };

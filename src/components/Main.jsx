@@ -11,7 +11,7 @@ import Login from './Login';
 
 import styles from '../css/Main.module.css';
 
-const Main = () => {
+const Main = (props) => {
     return (
         <main>
             <div className={styles.container}>

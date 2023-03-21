@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 import style from '../css/Message.module.css';
 
 const Name = (props) => {
@@ -16,6 +17,20 @@ const Chat = (props) => {
     return <li>{props.text}</li>;
 };
 
+const MessagesForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            {/* <textarea ref={text} onChange={updateMessageLocal} value={props.post}></textarea> */}
+            <Field component='textarea' name='message_textarea' />
+            <button>Send</button>
+        </form>
+    );
+};
+
+const MessagesFormContainer = reduxForm({
+    form: 'messages',
+})(MessagesForm);
+
 const Messages = (props) => {
     if (props.auth?.login === undefined) {
         return <Navigate to='/login' />;
@@ -24,12 +39,8 @@ const Messages = (props) => {
     const message = props.message.map((el) => <Chat text={el.text} key={el.id} />);
     const text = React.createRef();
 
-    const addMessageLocal = () => {
-        props.addMessage();
-    };
-
-    const updateMessageLocal = () => {
-        props.updateMessage(text.current.value);
+    const onSubmit = (data) => {
+        props.addMessage(data.message_textarea);
     };
     return (
         <section className={style.dialogs}>
@@ -38,8 +49,7 @@ const Messages = (props) => {
 
             <ul className={style.chats}>{message}</ul>
 
-            <textarea ref={text} onChange={updateMessageLocal} value={props.post}></textarea>
-            <button onClick={addMessageLocal}>Send</button>
+            <MessagesFormContainer onSubmit={onSubmit} />
         </section>
     );
 };

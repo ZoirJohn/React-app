@@ -38,5 +38,3 @@ const Login = () => {
     );
 };
 export default Login;
-
-//https://p2-187.pvvstream.pro/pj9HAjVVrcaj5C5cTgmXsQ/-171718843_456240292/720/vkvd205.mycdn.me/?srcIp=185.213.88.106&pr=40&expires=1679683629159&srcAg=STAGEFRIGHT&fromCache=1&ms=45.136.21.204&type=3&sig=KvEccHhKgUA&ct=0&urls=185.226.53.171&clientType=13&appId=512000384397&zs=12&id=2397242657284play&d
