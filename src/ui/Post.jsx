@@ -1,7 +1,7 @@
 import styles from '../css/Posts.module.css';
 import profilePhoto from '../img/dev.webp';
 
-const Post = (props) => {
+const PostSmall = (props) => {
    return (
       <div className={styles.posts__card}>
          <img src={profilePhoto} alt='' />
@@ -10,4 +10,4 @@ const Post = (props) => {
    );
 };
 
-export default Post;
+export default PostSmall;

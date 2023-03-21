@@ -17,7 +17,6 @@ function profile_reducer(state = initialState, action) {
     let stateCopy = { ...state };
     if (action.type === ADD_MESSAGE) {
         stateCopy.message.push({ text: action.text, id: stateCopy.message.length + 1 });
-        console.log(stateCopy.message);
     } else if (action.type === SET_USER_PROFILE) {
         return { ...stateCopy, profile: action.profile };
     } else if (action.type === SET_STATUS_PROFILE) {

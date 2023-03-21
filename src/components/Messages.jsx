@@ -20,7 +20,6 @@ const Chat = (props) => {
 const MessagesForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            {/* <textarea ref={text} onChange={updateMessageLocal} value={props.post}></textarea> */}
             <Field component='textarea' name='message_textarea' />
             <button>Send</button>
         </form>
@@ -37,7 +36,6 @@ const Messages = (props) => {
     }
     const data = props.data.map((el) => <Name path={el.id} word={el.name} key={el.id} />);
     const message = props.message.map((el) => <Chat text={el.text} key={el.id} />);
-    const text = React.createRef();
 
     const onSubmit = (data) => {
         props.addMessage(data.message_textarea);

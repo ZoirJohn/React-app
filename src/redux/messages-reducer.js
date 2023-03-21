@@ -33,7 +33,6 @@ function messages_reducer(state = initialState, action) {
     let stateCopy = { ...state };
     if (action.type === ADD_CONTACT) {
         stateCopy.message.push({ text: action.text, id: stateCopy.message.length + 1 });
-        console.log(stateCopy.message);
 
     } else if (action.type === UPDATE_CONTACT) {
         stateCopy.post = action.text;

@@ -1,4 +1,4 @@
-import Post from './Post';
+import PostSmall from './Post';
 import styles from '../css/Posts.module.css';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
@@ -9,7 +9,7 @@ const PostsForm = (props) => {
             <label>My posts</label>
             <Field component='textarea' name='post_textarea' placeholder='Введите текст' />
 
-            <button>Send</button>
+            <button type='submit'>Send</button>
         </form>
     );
 };
@@ -24,14 +24,15 @@ const Posts = (props) => {
     };
     return (
         <section className={styles.section__post}>
-            <PostsFormContainer addPost={props.addPost} updatePost={props.updatePost} onSubmit={onSubmit} />
+            <PostsFormContainer onSubmit={onSubmit} />
 
             <div className={styles.posts_box}>
                 {props.message.map((e) => (
-                    <Post message={e.text} key={e.id} />
+                    <PostSmall message={e.text} key={e.id} />
                 ))}
             </div>
         </section>
     );
 };
+
 export default Posts;

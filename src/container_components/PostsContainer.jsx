@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { addPostAction, updatePostAction } from '../redux/profile-reducer';
+import { addPostAction } from '../redux/profile-reducer';
 import Posts from '../ui/Posts';
 
 const mapStateToProps = (state) => {
-    return { post: state.profilePage.post, message: state.profilePage.message };
+    return { message: state.profilePage.message };
 };
 
 const mapDispatchToProps = (dispatch) => {

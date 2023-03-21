@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { compose } from 'redux';
 import Profile from '../components/Profile';
 import withAuthRedirect from '../hoc/withAuthRedirect';
-import { setProfile, getStatus,updateStatus } from '../redux/profile-reducer';
+import { setProfile, getStatus, updateStatus } from '../redux/profile-reducer';
 
 // ! With Router (1)
 function withRouter(Component) {
@@ -38,6 +38,6 @@ const mapStateToProps = (state) => {
     return { profilePage: state.profilePage, auth: state.auth.isAuthorized };
 };
 
-const ProfileContainer = compose(connect(mapStateToProps, { setProfile, getStatus,updateStatus }), withRouter, withAuthRedirect)(ProfileApi);
+const ProfileContainer = compose(connect(mapStateToProps, { setProfile, getStatus, updateStatus }), withRouter, withAuthRedirect)(ProfileApi);
 
 export default ProfileContainer;
