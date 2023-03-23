@@ -25,6 +25,7 @@ class ProfileApi extends React.Component {
             userId = 2;
         }
         this.props.setProfile(userId);
+        this.props.getStatus(userId);
     }
     render() {
         return <Profile {...this.props} />;

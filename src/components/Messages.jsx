@@ -12,7 +12,6 @@ const Name = (props) => {
         </li>
     );
 };
-
 const Chat = (props) => {
     return <li>{props.text}</li>;
 };
@@ -26,9 +25,7 @@ const MessagesForm = (props) => {
     );
 };
 
-const MessagesFormContainer = reduxForm({
-    form: 'messages',
-})(MessagesForm);
+const MessagesFormContainer = reduxForm({ form: 'messages' })(MessagesForm);
 
 const Messages = (props) => {
     if (props.auth?.login === undefined) {
@@ -38,15 +35,14 @@ const Messages = (props) => {
     const message = props.message.map((el) => <Chat text={el.text} key={el.id} />);
 
     const onSubmit = (data) => {
+        console.log(props);
         props.addMessage(data.message_textarea);
     };
     return (
         <section className={style.dialogs}>
             <h1>Messages</h1>
             <ul className={style.names}>{data}</ul>
-
             <ul className={style.chats}>{message}</ul>
-
             <MessagesFormContainer onSubmit={onSubmit} />
         </section>
     );

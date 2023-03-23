@@ -14,15 +14,14 @@ const initialState = {
 };
 
 function profile_reducer(state = initialState, action) {
-    let stateCopy = { ...state };
     if (action.type === ADD_MESSAGE) {
-        stateCopy.message.push({ text: action.text, id: stateCopy.message.length + 1 });
+        return { ...state, message: [...state.message, { text: action.text, id: state.message.length + 1 }] };
     } else if (action.type === SET_USER_PROFILE) {
-        return { ...stateCopy, profile: action.profile };
+        return { ...state, profile: action.profile };
     } else if (action.type === SET_STATUS_PROFILE) {
-        return { ...stateCopy, status: action.status };
+        return { ...state, status: action.status };
     }
-    return stateCopy;
+    return {...state};
 }
 
 const setProfile = (userId) => (dispatch) => {

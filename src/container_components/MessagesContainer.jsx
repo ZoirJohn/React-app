@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { addContactAction, updateContactAction } from '../redux/messages-reducer';
+import { addContactAction } from '../redux/messages-reducer';
 import { compose } from 'redux';
 import Messages from '../components/Messages';
 import withAuthRedirect from '../hoc/withAuthRedirect';
 
 const mapStateToProps = (state) => {
-    return { message: state.messagesPage.message, data: state.messagesPage.data, post: state.messagesPage.post, auth: state.auth.isAuthorized };
+    return { message: state.messagesPage.message, data: state.messagesPage.data, auth: state.auth.isAuthorized };
 };
 
 const mapDispatchToProps = (dispatch) => {

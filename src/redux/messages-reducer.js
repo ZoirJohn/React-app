@@ -26,18 +26,13 @@ const initialState = {
         { text: 'Hello', id: 3 },
         { text: 'Hi', id: 4 },
     ],
-    post: '',
 };
 
 function messages_reducer(state = initialState, action) {
-    let stateCopy = { ...state };
     if (action.type === ADD_CONTACT) {
-        stateCopy.message.push({ text: action.text, id: stateCopy.message.length + 1 });
-
-    } else if (action.type === UPDATE_CONTACT) {
-        stateCopy.post = action.text;
+        return { ...state, message: [...state.message, { text: action.text, id: state.message.length + 1 }] };
     }
-    return stateCopy;
+    return state;
 }
 
 const addContactAction = (text) => ({ type: ADD_CONTACT, text });

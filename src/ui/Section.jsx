@@ -3,12 +3,9 @@ import img from '../img/background.webp';
 import dev from '../img/photo.png';
 
 const ProfileSection = (props) => {
-    if (props.status === null) {
-        props.getStatus(props.profile.userId);
-    }
     let status = props.status;
-    const [editMode, setEditMode] = useState(false);
-    const [word, setWord] = useState(status);
+    let [editMode, setEditMode] = useState(false);
+    let [word, setWord] = useState(status);
 
     const putStatus = (e) => {
         setEditMode(false);
