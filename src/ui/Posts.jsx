@@ -2,12 +2,16 @@ import PostSmall from './Post';
 import styles from '../css/Posts.module.css';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { lengthValidatorCreator, required } from '../tools/validator';
+import Textarea from './Textarea';
+
+const lengthValidator = lengthValidatorCreator(10);
 
 const PostsForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={styles.form}>
             <label>My posts</label>
-            <Field component='textarea' name='post_textarea' placeholder='Введите текст' />
+            <Field component={Textarea} name='post_textarea' placeholder='Введите текст' validate={[required, lengthValidator]} />
 
             <button type='submit'>Send</button>
         </form>
