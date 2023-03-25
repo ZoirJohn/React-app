@@ -35,7 +35,6 @@ const Messages = (props) => {
     const message = props.message.map((el) => <Chat text={el.text} key={el.id} />);
 
     const onSubmit = (data) => {
-        console.log(props);
         props.addMessage(data.message_textarea);
     };
     return (
