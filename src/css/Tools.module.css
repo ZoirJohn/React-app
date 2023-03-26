@@ -6,7 +6,7 @@
     width: 100%;
     padding: 0 0 2em;
 }
-.text_area {
+.text_area:not(.text_area[type='checkbox']) {
     width: 100%;
     padding: 0.3em;
     border: 1px solid var(--main-color);

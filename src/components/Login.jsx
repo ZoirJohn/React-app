@@ -18,7 +18,7 @@ const Form = (props) => {
             </label>
 
             <label htmlFor='remember_input' className={styles.checkbox_label}>
-                Remember me: <Field component={Input} validate={[required]} type='checkbox' name='remember_input' />
+                Remember me: <Field component={Input} type='checkbox' name='remember_input' />
             </label>
 
             <button>Login</button>

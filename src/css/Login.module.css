@@ -9,6 +9,9 @@ section {
     gap: 1em 0;
     padding: 2em 0;
 }
+.form label {
+    width: 50%;
+}
 .form label:not(.checkbox_label) {
     font-size: 1.5rem;
     display: flex;
@@ -17,14 +20,9 @@ section {
     gap: 0 1em;
 }
 input:not([type='checkbox'], [type='radio']) {
-    width: 300px;
     background: #bcbcbc;
-    border: none;
-    padding: 1em;
-    font-size: 1rem;
-}
-input:not([type='checkbox'], [type='radio'])::placeholder {
-    font-size: 1rem;
+    padding: 0.8em !important;
+    font-size: 1.2rem !important;
 }
 .form button {
     width: 80px;
