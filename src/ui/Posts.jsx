@@ -3,7 +3,7 @@ import styles from '../css/Posts.module.css';
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { lengthValidatorCreator, required } from '../tools/validator';
-import Textarea from './Textarea';
+import { Textarea } from './Controls';
 
 const lengthValidator = lengthValidatorCreator(10);
 

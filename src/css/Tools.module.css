@@ -4,6 +4,7 @@
     max-height: 100px;
     min-height: 50px;
     width: 100%;
+    padding: 0 0 2em;
 }
 .text_area {
     width: 100%;
@@ -24,7 +25,7 @@
 .error__text {
     position: absolute;
     color: #f00;
-    bottom: -40%;
+    bottom: 10%;
     width: 100%;
     left: 0;
 }

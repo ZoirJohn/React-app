@@ -2,7 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import style from '../css/Message.module.css';
+import { Textarea } from '../ui/Controls';
+import styles from '../css/Message.module.css';
+import { lengthValidatorCreator, required } from '../tools/validator';
+
+const lengthValidator = lengthValidatorCreator(10);
 
 const Name = (props) => {
     let path = `/messages/${props.path}`;
@@ -19,7 +23,7 @@ const Chat = (props) => {
 const MessagesForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component='textarea' name='message_textarea' />
+            <Field component={Textarea} name='message_textarea' validate={[required, lengthValidator]} />
             <button>Send</button>
         </form>
     );
@@ -38,10 +42,10 @@ const Messages = (props) => {
         props.addMessage(data.message_textarea);
     };
     return (
-        <section className={style.dialogs}>
+        <section className={styles.dialogs}>
             <h1>Messages</h1>
-            <ul className={style.names}>{data}</ul>
-            <ul className={style.chats}>{message}</ul>
+            <ul className={styles.names}>{data}</ul>
+            <ul className={styles.chats}>{message}</ul>
             <MessagesFormContainer onSubmit={onSubmit} />
         </section>
     );
