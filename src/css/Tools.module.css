@@ -1,9 +1,12 @@
-.text_area {
+.text_area__parent {
+    position: relative;
     align-self: center;
-    max-width: 100%;
-    min-width: 100%;
     max-height: 100px;
     min-height: 50px;
+    width: 100%;
+}
+.text_area {
+    width: 100%;
     padding: 0.3em;
     border: 1px solid var(--main-color);
     border-radius: 0.5em;
@@ -12,4 +15,16 @@
 .text_area:focus {
     box-shadow: 0 0 10px var(--main-color);
     outline: none;
+}
+.text_area.error {
+    box-shadow: 0 0 10px #f00;
+    outline: none;
+    border: 1px solid #f00;
+}
+.error__text {
+    position: absolute;
+    color: #f00;
+    bottom: -40%;
+    width: 100%;
+    left: 0;
 }
