@@ -32,4 +32,5 @@ input:not([type='checkbox'], [type='radio']) {
     border: none;
     color: #fff;
     font-family: 'Roboto Mono';
+    cursor: pointer;
 }
