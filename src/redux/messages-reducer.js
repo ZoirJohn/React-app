@@ -1,5 +1,4 @@
 const ADD_CONTACT = 'ADD-CONTACT';
-const UPDATE_CONTACT = 'UPDATE-CONTACT';
 
 const initialState = {
     data: [
