@@ -12,22 +12,24 @@ const initialState = {
 function auth_reducer(state = initialState, action) {
     let stateCopy = { ...state };
     if (action.type === SET_REGISTER) {
-        return { ...stateCopy, isAuthorized: action.isRegistered };
+        console.log(action.data.isRegistered);
+        return { ...stateCopy, isAuthorized: action.data.isRegistered };
     }
     return stateCopy;
 }
 
 const setData = () => (dispatch) => {
     headerAPI.setData().then((response) => {
+        const { id, email, login } = response.data.data;
         if (response.data.resultCode === 0) {
-            dispatch(setUserData(response.data.data));
+            dispatch(setUserData(id, email, login, true));
         }
     });
 };
 const login = (email, password, rememberMe) => (dispatch) => {
     headerAPI.login(email, password, rememberMe).then((response) => {
         if (response.data.resultCode === 0) {
-            dispatch(setUserData());
+            dispatch(setUserData(response.data.data));
         }
     });
 };
@@ -39,6 +41,6 @@ const logout = () => (dispatch) => {
     });
 };
 
-const setUserData = (isRegistered) => ({ type: SET_REGISTER, userId, email, login, isRegistered });
+const setUserData = (id, email, login, isRegistered) => ({ type: SET_REGISTER, data: { id, email, login, isRegistered } });
 
 export { auth_reducer, setData };
