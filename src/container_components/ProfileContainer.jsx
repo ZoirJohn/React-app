@@ -39,6 +39,6 @@ const mapStateToProps = (state) => {
     return { profilePage: state.profilePage, auth: state.auth.isAuthorized };
 };
 
-const ProfileContainer = compose(connect(mapStateToProps, { setProfile, getStatus, updateStatus }), withRouter, withAuthRedirect)(ProfileApi);
+const ProfileContainer = compose(connect(mapStateToProps, { setProfile, getStatus  }), withRouter, withAuthRedirect)(ProfileApi);
 
 export default ProfileContainer;

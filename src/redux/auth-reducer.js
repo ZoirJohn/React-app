@@ -1,4 +1,4 @@
-import { headerAPI } from '../api/api';
+import {headerAPI} from '../api/api';
 
 const SET_REGISTER = 'SET-REGISTER';
 
@@ -10,27 +10,27 @@ const initialState = {
 };
 
 function auth_reducer(state = initialState, action) {
-    let stateCopy = { ...state };
+    let stateCopy = {...state};
     if (action.type === SET_REGISTER) {
-        console.log(action.data.isRegistered);
-        return { ...stateCopy, isAuthorized: action.data.isRegistered };
+        return {...stateCopy, isAuthorized: action.data.isRegistered};
     }
     return stateCopy;
 }
 
 const setData = () => (dispatch) => {
-    headerAPI.setData().then((response) => {
-        const { id, email, login } = response.data.data;
+    headerAPI.setInfo().then((response) => {
         if (response.data.resultCode === 0) {
+            const {id, email, login} = response.data.data;
             dispatch(setUserData(id, email, login, true));
         }
     });
 };
 const login = (email, password, rememberMe) => (dispatch) => {
     headerAPI.login(email, password, rememberMe).then((response) => {
-        if (response.data.resultCode === 0) {
-            dispatch(setUserData(response.data.data));
-        }
+        // if (response.data.resultCode === 0) {
+        //     dispatch(setUserData(response.data.data));
+        // }
+        dispatch(setData())
     });
 };
 const logout = () => (dispatch) => {
@@ -41,6 +41,6 @@ const logout = () => (dispatch) => {
     });
 };
 
-const setUserData = (id, email, login, isRegistered) => ({ type: SET_REGISTER, data: { id, email, login, isRegistered } });
+const setUserData = (id, email, login, isRegistered) => ({type: SET_REGISTER, data: {id, email, login, isRegistered}});
 
-export { auth_reducer, setData };
+export {auth_reducer, setData, login, logout};

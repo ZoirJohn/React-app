@@ -4,14 +4,14 @@ import styles from '../css/Header.module.css';
 import logo from '../img/svg.jpg';
 
 const Header = (props) => {
+    console.log(props)
     return (
         <header>
             <div className={styles.container}>
                 <Link to='/'>
                     <img src={logo} alt='' />
                 </Link>
-
-                {props.isAuthorized?.login === undefined ? <Link to='/login'>Log In</Link> : <p>Free</p>}
+                {props.isAuthorized === null ? <Link to='/login'>Log In</Link> : <p>Free</p>}
             </div>
         </header>
     );

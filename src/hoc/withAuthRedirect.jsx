@@ -4,8 +4,8 @@ import { Navigate } from 'react-router-dom';
 const withAuthRedirect = (Component) => {
     class RedirectComponent extends React.Component {
         render() {
-            console.log(this.props);
-            if (this.props.auth === undefined) return <Navigate to='/login' />;
+            console.log(this.props)
+            if (this.props.auth === null) return <Navigate to='/login' />;
             return <Component {...this.props} />;
         }
     }

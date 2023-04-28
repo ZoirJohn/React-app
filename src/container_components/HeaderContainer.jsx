@@ -13,6 +13,7 @@ class HeaderApi extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+
     return {
         isAuthorized: state.auth.isAuthorized,
     };
