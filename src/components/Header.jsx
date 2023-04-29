@@ -4,7 +4,6 @@ import styles from '../css/Header.module.css';
 import logo from '../img/svg.jpg';
 
 const Header = (props) => {
-    console.log(props)
     return (
         <header>
             <div className={styles.container}>

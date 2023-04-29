@@ -6,7 +6,7 @@ import {lengthValidatorCreator, required} from '../tools/validator';
 import {connect} from "react-redux";
 import {login} from "../redux/auth-reducer";
 
-const lengthValidator = lengthValidatorCreator(10);
+const lengthValidator = lengthValidatorCreator(5);
 
 const Form = (props) => {
     return (
@@ -37,7 +37,6 @@ const ReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit = (data) => {
-        // console.log(props.login);
         props.login(data.email_input, data.password_input, data.remember_input)
     };
     return (

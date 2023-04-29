@@ -3,16 +3,13 @@ import {headerAPI} from '../api/api';
 const SET_REGISTER = 'SET-REGISTER';
 
 const initialState = {
-    userId: null,
-    email: null,
-    login: null,
-    isAuthorized: null,
+    userId: null, email: null, login: null, isAuthorized: null,
 };
 
 function auth_reducer(state = initialState, action) {
     let stateCopy = {...state};
     if (action.type === SET_REGISTER) {
-        return {...stateCopy, isAuthorized: action.data.isRegistered};
+        return {...stateCopy, ...action.data};
     }
     return stateCopy;
 }
@@ -25,12 +22,12 @@ const setData = () => (dispatch) => {
         }
     });
 };
-const login = (email, password, rememberMe) => (dispatch) => {
-    headerAPI.login(email, password, rememberMe).then((response) => {
-        // if (response.data.resultCode === 0) {
-        //     dispatch(setUserData(response.data.data));
-        // }
-        dispatch(setData())
+const login = (email, password,remember) => (dispatch) => {
+    headerAPI.login(email, password).then((response) => {
+        if (response.data.resultCode===10 ) {
+            console.log(response)
+            dispatch(setData());
+        }
     });
 };
 const logout = () => (dispatch) => {

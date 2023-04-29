@@ -32,7 +32,7 @@ const MessagesForm = (props) => {
 const MessagesFormContainer = reduxForm({ form: 'messages' })(MessagesForm);
 
 const Messages = (props) => {
-    if (props.auth?.login === undefined) {
+    if (props.auth === undefined) {
         return <Navigate to='/login' />;
     }
     const data = props.data.map((el) => <Name path={el.id} word={el.name} key={el.id} />);

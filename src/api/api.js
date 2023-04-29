@@ -27,19 +27,26 @@ const profileAPI = {
         return instance.get(`profile/status/${userId}`);
     },
     updateStatus: (status) => {
-        return instance.put(`profile/status`, { status: status });
+        return instance.put(`profile/status`, {status: status});
     },
 };
 const headerAPI = {
     setInfo: () => {
         return instance.get(`auth/me`);
     },
-    login: (email, password, rememberMe = false) => {
-        return instance.post(`auth/login`, { email, password, rememberMe });
+    login: (email, password, rememberMe = false, captcha = false) => {
+        return instance.post(`auth/login`, {email, password, rememberMe,});
     },
     logout: () => {
         return instance.delete(`auth/login`);
     },
 };
 
-export { usersAPI, profileAPI, headerAPI };
+const loginAPI = {
+    security: () => {
+
+    }
+}
+
+
+export {usersAPI, profileAPI, headerAPI};
