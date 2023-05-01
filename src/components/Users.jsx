@@ -1,10 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import {Navigate, NavLink} from 'react-router-dom';
 import { usersAPI } from '../api/api';
 import styles from '../css/Users.module.css';
 import photo from '../img/photo.png';
 import Preloader from '../ui/Loader';
 
 const Users = (props) => {
+    if (props.auth === null) {
+        return <Navigate to='/login'/>
+    }
     return (
         <section className={styles.users}>
             {props.usersPage.isFetching ? <Preloader /> : ''}

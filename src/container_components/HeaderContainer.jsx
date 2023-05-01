@@ -1,23 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Header from '../components/Header';
-import { setData } from '../redux/auth-reducer';
+import {logout, setData} from '../redux/auth-reducer';
 
 class HeaderApi extends React.Component {
-    componentDidMount() {
-        this.props.setData();
-    }
-    render() {
-        return <Header {...this.props} />;
-    }
+	componentDidMount() {
+		this.props.setData();
+	}
+
+	render() {
+		return <Header {...this.props} />;
+	}
 }
 
 const mapStateToProps = (state) => {
-
-    return {
-        isAuthorized: state.auth.isAuthorized,
-    };
+	return {
+		isAuthorized: state.auth.isRegistered,
+	};
 };
 
-const HeaderContainer = connect(mapStateToProps, { setData })(HeaderApi);
+const HeaderContainer = connect(mapStateToProps, {setData,logout})(HeaderApi);
 export default HeaderContainer;

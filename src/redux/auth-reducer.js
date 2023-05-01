@@ -3,7 +3,7 @@ import {headerAPI} from '../api/api';
 const SET_REGISTER = 'SET-REGISTER';
 
 const initialState = {
-    userId: null, email: null, login: null, isAuthorized: null,
+     email: null, login: null, isAuthorized: null,
 };
 
 function auth_reducer(state = initialState, action) {
@@ -22,10 +22,10 @@ const setData = () => (dispatch) => {
         }
     });
 };
-const login = (email, password,remember) => (dispatch) => {
+const login = (email, password, remember) => (dispatch) => {
     headerAPI.login(email, password).then((response) => {
-        if (response.data.resultCode===10 ) {
-            console.log(response)
+        if (response.data.resultCode === 0) {
+            console.log(response);
             dispatch(setData());
         }
     });
@@ -33,6 +33,7 @@ const login = (email, password,remember) => (dispatch) => {
 const logout = () => (dispatch) => {
     headerAPI.logout().then((response) => {
         if (response.data.resultCode === 0) {
+            console.log(response);
             dispatch(setUserData(null, null, null, false));
         }
     });
