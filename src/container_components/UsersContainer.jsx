@@ -30,7 +30,7 @@ class UsersApi extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-	return {usersPage: state.usersPage, auth: state.auth.isRegistered};
+	return {usersPage: state.usersPage, auth: state.auth.isAuthorized};
 };
 
 const UsersContainer = compose(

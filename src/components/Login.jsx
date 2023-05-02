@@ -52,7 +52,7 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		auth: state.auth.isRegistered,
+		auth: state.auth.isAuthorized,
 	};
 };
 const LoginContainer = connect(mapStateToProps, {login})(Login);

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {Navigate} from 'react-router-dom';
 
 const SettingsNavigate = (props) => {
-	if (props.auth === null) {
+	if (props.auth === null || props.auth === false) {
 		return <Navigate to="/login"/>;
 	}
 	return <section className="settings"><h1>Settings</h1></section>;
@@ -10,7 +10,7 @@ const SettingsNavigate = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		auth: state.auth.isRegistered,
+		auth: state.auth.isAuthorized,
 	};
 };
 

@@ -40,7 +40,7 @@ class ProfileApi extends React.Component {
 const mapStateToProps = (state) => {
 	return {
 		profilePage: state.profilePage,
-		auth: state.auth.isRegistered,
+		auth: state.auth.isAuthorized,
 		id: state.auth.id,
 	};
 

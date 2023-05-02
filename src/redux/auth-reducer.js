@@ -33,12 +33,11 @@ const login = (email, password, remember) => (dispatch) => {
 const logout = () => (dispatch) => {
     headerAPI.logout().then((response) => {
         if (response.data.resultCode === 0) {
-            console.log(response);
             dispatch(setUserData(null, null, null, false));
         }
     });
 };
 
-const setUserData = (id, email, login, isRegistered) => ({type: SET_REGISTER, data: {id, email, login, isRegistered}});
+const setUserData = (id, email, login, isAuthorized) => ({type: SET_REGISTER, data: {id, email, login, isAuthorized}});
 
 export {auth_reducer, setData, login, logout};

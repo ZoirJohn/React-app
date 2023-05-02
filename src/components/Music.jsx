@@ -2,7 +2,7 @@ import {Navigate} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 const MusicNavigate = (props) => {
-	if (props.auth === null) {
+	if (props.auth === null || props.auth === false) {
 		return <Navigate to="/login"/>;
 	}
 	return <section className="music"><h1>Music</h1></section>;
@@ -10,7 +10,7 @@ const MusicNavigate = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-		auth: state.auth.isRegistered,
+		auth: state.auth.isAuthorized,
 	};
 };
 

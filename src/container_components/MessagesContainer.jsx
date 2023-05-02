@@ -5,7 +5,7 @@ import Messages from '../components/Messages';
 import withAuthRedirect from '../hoc/withAuthRedirect';
 
 const mapStateToProps = (state) => {
-	return {message: state.messagesPage.message, data: state.messagesPage.data, auth: state.auth.isRegistered};
+	return {message: state.messagesPage.message, data: state.messagesPage.data, auth: state.auth.isAuthorized};
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -15,7 +15,7 @@ class HeaderApi extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		isAuthorized: state.auth.isRegistered,
+		auth: state.auth.isAuthorized,
 	};
 };
 
