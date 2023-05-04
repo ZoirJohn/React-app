@@ -24,9 +24,12 @@ const Form = (props) => {
 
 			<label htmlFor="remember_input" className={styles.checkbox_label}>
 				Remember me: <Field component={Input} type="checkbox" name="remember_input"/>
-				<span className={styles._error}>
+				{
+					props.error && <span className={styles._error}>
+										{props.error}
+									</span>
+				}
 
-				</span>
 			</label>
 
 			<button>Login</button>

@@ -29,7 +29,7 @@ const login = (email, password, remember) => (dispatch) => {
 			console.log(response.data);
 			dispatch(setData());
 		} else {
-			dispatch(stopSubmit('login', response.data.messages));
+			dispatch(stopSubmit('login', {_error: response.data.messages}));
 		}
 	});
 };
