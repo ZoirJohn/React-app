@@ -9,6 +9,7 @@ import {Navigate} from 'react-router-dom';
 const lengthValidator = lengthValidatorCreator(5);
 
 const Form = (props) => {
+	console.log(props);
 	return (
 		<form onSubmit={props.handleSubmit} className={styles.form}>
 			<label htmlFor="email_input">
@@ -23,6 +24,9 @@ const Form = (props) => {
 
 			<label htmlFor="remember_input" className={styles.checkbox_label}>
 				Remember me: <Field component={Input} type="checkbox" name="remember_input"/>
+				<span className={styles._error}>
+
+				</span>
 			</label>
 
 			<button>Login</button>

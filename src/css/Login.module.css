@@ -34,3 +34,6 @@ input:not([type='checkbox'], [type='radio']) {
     font-family: 'Roboto Mono';
     cursor: pointer;
 }
+._error{
+
+}
