@@ -50,4 +50,4 @@ const ProfileContainer = compose(connect(mapStateToProps, {
 	setProfile, getStatus, updateStatus,
 }), withRouter, withAuthRedirect)(ProfileApi);
 
-export default ProfileContainer;
+export {ProfileContainer,withRouter};
