@@ -1,3 +1,5 @@
+import {setData} from './auth-reducer';
+
 const initializing = 'INITIALIZING';
 const initialState = {
 		initialized: false,
@@ -10,4 +12,11 @@ function app_reducer(state = initialState) {
 
 const initializing_action = () => ({type: initializing});
 
-export default app_reducer;
+const initialize = () => (dispatch) => {
+	const setDataInit = dispatch(setData());
+	// debugger;
+	Promise.all([setDataInit]).then(() => initializing_action());
+};
+
+
+export {app_reducer, initialize};

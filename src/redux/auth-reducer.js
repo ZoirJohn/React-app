@@ -23,6 +23,7 @@ const setData = () => (dispatch) => {
 		}
 	});
 };
+
 const login = (email, password, remember) => (dispatch) => {
 	headerAPI.login(email, password).then((response) => {
 		if (response.data.resultCode === 0) {
@@ -33,6 +34,7 @@ const login = (email, password, remember) => (dispatch) => {
 		}
 	});
 };
+
 const logout = () => (dispatch) => {
 	headerAPI.logout().then((response) => {
 		if (response.data.resultCode === 0) {

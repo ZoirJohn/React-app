@@ -9,7 +9,6 @@ import {Navigate} from 'react-router-dom';
 const lengthValidator = lengthValidatorCreator(5);
 
 const Form = (props) => {
-	console.log(props);
 	return (
 		<form onSubmit={props.handleSubmit} className={styles.form}>
 			<label htmlFor="email_input">
