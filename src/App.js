@@ -15,7 +15,7 @@ class App extends Component {
 	}
 
 	render() {
-		if (this.props.initialized !== true) {
+		if (!this.props.initialized) {
 			return <Loader/>;
 		}
 		return (
@@ -27,11 +27,9 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return {initialized: state.app.initialized};
 };
 
 export default compose(
 	withRouter,
-	connect(mapStateToProps, {setData, initialize},
-	))(App);
+	connect(mapStateToProps, {setData, initialize}))(App);

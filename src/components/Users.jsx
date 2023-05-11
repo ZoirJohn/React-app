@@ -10,18 +10,18 @@ const Users = (props) => {
     }
     return (
         <section className={styles.users}>
-            {props.usersPage.isFetching ? <Preloader /> : ''}
+            {props.isFetching ? <Preloader /> : ''}
 
             <h1>Users</h1>
             <div className={styles.user__buttons}>
                 {props.pages.map((number) => (
-                    <button key={number} onClick={() => props.onPageChange(number)} className={props.usersPage.currentPage === number ? styles.active : styles.passive}>
+                    <button key={number} onClick={() => props.onPageChange(number)} className={props.currentPage === number ? styles.active : styles.passive}>
                         {number}
                     </button>
                 ))}
             </div>
             <ul>
-                {props.usersPage.users.map((user) => (
+                {props.users.map((user) => (
                     <li key={user.id} className={styles.user__card}>
                         <NavLink to={`/profile/${user.id}`}>
                             <img src={user.photos.small ? user.photos.small : photo} alt='' />
@@ -40,7 +40,7 @@ const Users = (props) => {
                                 </button>
                             ) : (
                                 <button
-                                    disabled={props.usersPage.isDisabling.some((id) => id === user.id)}
+                                    disabled={props.isDisabling.some((id) => id === user.id)}
                                     onClick={() => {
                                         props.followSuccess(user.id);
                                     }}

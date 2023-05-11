@@ -16,7 +16,7 @@ function auth_reducer(state = initialState, action) {
 }
 
 const setData = () => (dispatch) => {
-	headerAPI.setInfo().then((response) => {
+	return headerAPI.setInfo().then((response) => {
 		if (response.data.resultCode === 0) {
 			const {id, email, login} = response.data.data;
 			dispatch(setUserData(id, email, login, true));
