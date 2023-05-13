@@ -4,7 +4,14 @@ import {connect} from 'react-redux';
 import {followSuccess, getUsersThunk, setPages, unfollowSuccess} from '../redux/users-reducer';
 import {compose} from 'redux';
 import withAuthRedirect from '../hoc/withAuthRedirect';
-import {get_currentPage, get_isFetching, get_pageSize, get_users} from '../redux/users-selectors';
+import {
+	get_currentPage,
+	get_isDisabling,
+	get_isFetching,
+	get_pageSize,
+	get_totalUsers,
+	get_users,
+} from '../redux/users-selectors';
 
 class UsersApi extends React.Component {
 	componentDidMount() {
@@ -25,19 +32,20 @@ class UsersApi extends React.Component {
 		}
 
 		return <Users pages={pages} onPageChange={this.onPageChange} isFetching={this.props.isFetching}
-					  currentPage={this.props.currentPage} users={this.props.users}
+					  currentPage={this.props.currentPage} users={this.props.users} isDisabling={this.props.isDisabling}
 					  followSuccess={this.props.followSuccess} unfollowSuccess={this.props.unfollowSuccess}
 					  setButton={this.props.setButton}/>;
 	}
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return {
 		isFetching: get_isFetching(state),
 		currentPage: get_currentPage(state),
 		users: get_users(state),
 		pageSize: get_pageSize(state),
+		totalUsers: get_totalUsers(state),
+		isDisabling: get_isDisabling(state),
 	};
 };
 

@@ -31,7 +31,7 @@ const Users = (props) => {
                             {user.name}
                             {user.isFollowed ? (
                                 <button
-                                    disabled={props.usersPage.isDisabling.some((id) => id === user.id)}
+                                    disabled={props.isDisabling.some((id) => id === user.id)}
                                     onClick={() => {
                                         props.unfollowSuccess(user.id);
                                     }}

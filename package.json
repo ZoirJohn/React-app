@@ -12,10 +12,11 @@
       "react-icons": "^4.7.1",
       "react-redux": "^8.0.5",
       "react-router-dom": "^6.4.5",
-      "react-scripts": "5.0.1",
+      "react-scripts": "^2.1.8",
       "redux": "^4.2.1",
       "redux-form": "^8.3.9",
       "redux-thunk": "^2.4.2",
+      "reselect": "^4.1.8",
       "web-vitals": "^2.1.4"
    },
    "scripts": {
