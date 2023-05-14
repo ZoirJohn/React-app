@@ -1,0 +1,39 @@
+section {
+    grid-column: 2/5;
+}
+.form {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em 0;
+    padding: 2em 0;
+}
+.form label {
+    width: 50%;
+}
+.form label:not(.checkbox_label) {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 0 1em;
+}
+input:not([type='checkbox'], [type='radio']) {
+    background: #bcbcbc;
+    padding: 0.8em !important;
+    font-size: 1.2rem !important;
+}
+.form button {
+    width: 80px;
+    height: 30px;
+    font-size: 1rem;
+    background: var(--main-color);
+    border: none;
+    color: #fff;
+    font-family: 'Roboto Mono';
+    cursor: pointer;
+}
+._error{
+    color: #f00;
+}

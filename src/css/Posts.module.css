@@ -1,0 +1,72 @@
+.section__post {
+    grid-column: 2/5;
+}
+
+.section__post img {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.section__post .form {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    gap: 0.5em 0;
+}
+
+.section__post .form label {
+    align-self: start;
+}
+
+.section__post .form button {
+    align-self: flex-end;
+    padding: 0.5em 1.2em;
+    font-size: 1rem;
+    border: none;
+    font-family: 'Roboto Mono';
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.section__post .form button:hover {
+    background: #00884fc0;
+}
+
+.posts_box {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.posts__card {
+    display: flex;
+    gap: 1em;
+    width: 70%;
+}
+.posts__card .post__text {
+    display: inline-block;
+    padding: 0.2em 1em 0.2em 0.5em;
+    background: #b6b6b6;
+    border-radius: 0.5em;
+    position: relative;
+    min-width: 20%;
+}
+.posts__card .post__text::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: #b6b6b6;
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: rotate(45deg) translate(0, -60%);
+    z-index: -1;
+}
+img[alt='loader'] {
+    width: 230px;
+}
