@@ -1,5 +1,0 @@
-// props.setUsers([
-//    { name: 'Dmitry', message: 'Hello speedy', location: { city: 'Minsk', country: 'Belarus' }, id: 1, isFollowed: true },
-//    { name: 'Sveta', message: 'Hi there', location: { city: 'Russia', country: 'Moskva' }, id: 2, isFollowed: false },
-//    { name: 'Sergei', message: 'How do you do?', location: { city: 'US', country: 'Colorado' }, id: 3, isFollowed: true },
-// ]);
