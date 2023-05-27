@@ -9,7 +9,7 @@ const ProfileSection = (props) => {
 
 	useEffect(() => {
 		setWord(props.status);
-	});
+	}, [props.status]);
 
 	const putStatus = (e) => {
 		setEditMode(false);

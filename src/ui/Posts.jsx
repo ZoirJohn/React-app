@@ -26,6 +26,7 @@ const Posts = (props) => {
     const onSubmit = (data) => {
         props.addPost(data.post_textarea);
     };
+    console.log(props);
     return (
         <section className={styles.section__post}>
             <PostsFormContainer onSubmit={onSubmit} />
