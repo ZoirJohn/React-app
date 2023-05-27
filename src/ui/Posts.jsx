@@ -22,11 +22,11 @@ const PostsFormContainer = reduxForm({
     form: 'posts',
 })(PostsForm);
 
-const Posts = (props) => {
+const Posts = React.memo((props) => {
     const onSubmit = (data) => {
         props.addPost(data.post_textarea);
     };
-    console.log(props);
+    console.log(props.message);
     return (
         <section className={styles.section__post}>
             <PostsFormContainer onSubmit={onSubmit} />
@@ -38,6 +38,6 @@ const Posts = (props) => {
             </div>
         </section>
     );
-};
+});
 
 export default Posts;
